@@ -1,0 +1,19 @@
+version: '3.0'
+services:
+  rasa:
+    image: rasa/rasa:2.6.3-full
+    ports:
+      - 5005:5005
+    volumes:
+      - ./:/app
+    command:
+      - run
+  app:
+    image: leonell147/action-server:v3
+    expose: 
+      - 5055
+    container_name: action-server
+  flask:
+    image: leonell147/agiletalk:v3
+    ports:
+      - 5000:5000
